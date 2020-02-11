@@ -2,7 +2,28 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+class App extends React.Component{
+
+  constructor() {
+    super();
+    this.state = {
+      user: {}
+    };
+  }
+
+
+  componentDidMount() {
+    axios.get('http://api.github.com/users/josiah-williams')
+    .then( res.json())
+      .then(data => this.setstate({userData: data}))
+      .catch(err => console.log(error));
+
+  }
+
+  
+
+
+render () {
   return (
     <div className="App">
       <header className="App-header">
@@ -22,5 +43,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
