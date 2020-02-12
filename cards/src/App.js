@@ -1,45 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import UserCard from './Components/UserCard'
+import axios from 'axios'
+
 
 class App extends React.Component{
 
   constructor() {
     super();
     this.state = {
-      user: {}
-    };
-  }
+      user:{}
+  };
+}
 
 
   componentDidMount() {
-    axios.get('http://api.github.com/users/josiah-williams')
-    .then( res.json())
-      .then(data => this.setstate({userData: data}))
-      .catch(err => console.log(error));
+    axios.get('http://api.github.com/users/Josiah-williams')
+      .then(res => {
+      this.setState({user: res.data})
+     })
+      .catch(err => console.log('Error fetching user.'));
+      }
 
-  }
+      render() {
+        return (
+          <div>
+            <UserCard user={this.state.user} />
+          </div>
+        );
+      }
+    }
 
-  
-
-
-render () {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default App;
