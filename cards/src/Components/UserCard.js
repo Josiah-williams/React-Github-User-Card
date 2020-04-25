@@ -23,9 +23,11 @@ class UserCard extends React.Component {
             <div className="userCard">
                 {console.log("User", this.props.user)}
                 <div className="user">
+                    <div key={user.id}>
                     <img src={this.props.user.avatar_url}></img>
                     <p>{this.props.user.name}</p>
                     <p>{this.props.user.location}</p>
+                </div>
                 </div>
                 <div className="followers">
                     <h2>Followers:</h2>
